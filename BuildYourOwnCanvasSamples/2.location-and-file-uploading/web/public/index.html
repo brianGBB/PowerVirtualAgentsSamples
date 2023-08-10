@@ -193,12 +193,12 @@
                 value: {text: "hello"}
               }
             });
-            dispatch({
+            /* dispatch({
               type: 'WEB_CHAT/SEND_MESSAGE_BACK',
               payload: {
                 text : locString
               }
-            });
+            }); */
             return next(action);
           // When Web Chat wants to send files, we intercept this action and send a message instead of an event with an attachment.
           } else if (type === 'WEB_CHAT/SEND_FILES') {
@@ -212,9 +212,11 @@
               // We intercept the Event and rather than sending it as an attachment we are converting the URL to a string
               // and dispatching a message.
               dispatch({
-                type: 'WEB_CHAT/SEND_MESSAGE_BACK',
+                type: 'WEB_CHAT/SEND_EVENT',
                 payload: {
-                  text : files[0]
+                  value : "fileUploaded",
+                  text : files[0],
+                  type : 'event'
                 }
               });
 
