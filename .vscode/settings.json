@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/c4549451-ca80-4bad-ad92-f02dfdf1cdfe/resourceGroups/bgWebChat/providers/Microsoft.Web/sites/OttoClaims",
+    "appService.deploySubpath": "BuildYourOwnCanvasSamples\\2.location-and-file-uploading\\web"
+}
