@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node-dev --no-notify --respawn .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm pack build && mv ./build/web-1.0.0.tgz web.tgz && rm -rf node_modules && npm install"
+    "build": "npm pack ./build/web-1.0.0.tgz && mv ./build/web-1.0.0.tgz web.tgz && rm -rf node_modules && npm install"
   },
   "author": "Microsoft Corporation",
   "license": "MIT",
