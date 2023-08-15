@@ -177,6 +177,8 @@
       }
 
       (async function main() {
+
+          console.log("entering main...");
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition, erroring);
           } else {
@@ -207,23 +209,26 @@
             (async function() {
               // Tells the bot that you are uploading files. This is optional.
               dispatch({ type: 'WEB_CHAT/SEND_TYPING' });
-
+              console.log("uploading file...");
               const files = await Promise.all(action.payload.files.map(({ name, url }) => uploadFile({ name, url })));
 
               // In order for Power VA to process a file, we need to pass the blob URL as a String within a message.
               // We intercept the Event and rather than sending it as an attachment we are converting the URL to a string
               // and dispatching a message.
+              console.log("files: " + files[0]);
               dispatch({
                 type: 'WEB_CHAT/SEND_EVENT',
                 payload: {
-                  value : "fileUploaded",
-                  text : files[0],
-                  type : 'event'
+                  name : "fileUploaded",
+                  // text : files[0],
+                  type : 'event',
+                  value : files[0]
                 }
               });
-
+              console.log("after event send...")
             })().catch(err => console.error(err));
           } else {
+            console.log("sending next action...");
             return next(action);
           }
         });
