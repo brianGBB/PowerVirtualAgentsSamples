@@ -124,7 +124,7 @@
     </div>
     <script>
       // This is a helper function for fetching JSON resources.
-      var locString = "Browser does not support geolocation." 
+      // var locString = "Browser does not support geolocation." 
       async function fetchJSON(url, options = {}) {
         const res = await fetch(url, {
           ...options,
@@ -143,12 +143,12 @@
 
       // Loading @azure/storage-blob bundle.
       const { Aborter, AnonymousCredential, BlockBlobURL, StorageURL, uploadBrowserDataToBlockBlob } = window.azblob;
-      function showPosition(position) {
+      /* function showPosition(position) {
         locString = position.coords.latitude + " " + position.coords.longitude;
-      }
+      } 
       function erroring(err){
         alert(err);
-      }
+      }*/
       // Upload a file to Azure Storage by supplying an Object URL and a name.
       async function uploadFile({ name, url }) {
         // Today, Web Chat uses createObjectURL() to represent the blob.
@@ -179,11 +179,11 @@
       (async function main() {
 
           console.log("entering main...");
-          if (navigator.geolocation) {
+          /* if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition, erroring);
           } else {
             alert("Geolocation is not supported by this browser.");
-          }
+          } */
           const store = WebChat.createStore({}, ({ dispatch }) => next => action => {
           const { type } = action;
           
